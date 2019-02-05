@@ -42,12 +42,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-
-//        double tempMin= result.getList().get(position*8).getMain().getTempMin() - 273.15;
-//        double tempMax= result.getList().get(position*8).getMain().getTempMax() - 273.15;
-//        String temperatura= "" + String.format("%.2f",tempMin) + "° / " + String.format("%.2f",tempMax)+"°";
         long temp =  Math.round(result.getList().get(position*8).getMain().getTemp() - 273.15);
-        // Log.d("test",""+result.getList().get(position*8).getMain().getTemp());
         String temperatura ="" + temp+"° C";
         String datetime=  result.getList().get(position*8).getDtTxt().split(" ")[0];
         String dayName= this.getDateOfTheWeek(datetime).toUpperCase();
@@ -55,8 +50,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
         holder.cardcity.setText(result.getCity().getName() +", "+result.getCity().getCountry());
         holder.cardday.setText(dayName);
         holder.cardtemp.setText(temperatura);
-        Log.d("ICON",result.getList().get(0).getWeather().get(0).getIcon());
-        holder.iconWeather.setImageResource(R.drawable.night10);
         holder.iconWeather.setImageResource(new WeatherIcon().getIconId(result.getList().get(0).getWeather().get(0).getIcon()));
         initRecyclerView(holder.cardRecycler, result);
 
@@ -72,7 +65,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return "";
+        return datetime;
     }
 
     public void initRecyclerView(RecyclerView recycler, Result result){

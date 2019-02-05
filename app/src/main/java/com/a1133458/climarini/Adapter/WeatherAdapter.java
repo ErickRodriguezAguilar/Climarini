@@ -1,11 +1,8 @@
 package com.a1133458.climarini.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +11,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.a1133458.climarini.Models.Result;
 import com.a1133458.climarini.R;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class WeatherAdapter  extends RecyclerView.Adapter<WeatherAdapter.ViewHolder>{
 
@@ -44,12 +38,7 @@ public class WeatherAdapter  extends RecyclerView.Adapter<WeatherAdapter.ViewHol
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-
-//        double tempMin= result.getList().get(position*8).getMain().getTempMin() - 273.15;
-//        double tempMax= result.getList().get(position*8).getMain().getTempMax() - 273.15;
-//        String temperatura= "" + String.format("%.2f",tempMin) + "° / " + String.format("%.2f",tempMax)+"°";
         long temp =  Math.round(result.getList().get(position*8).getMain().getTemp() - 273.15);
-       // Log.d("test",""+result.getList().get(position*8).getMain().getTemp());
         String temperatura ="" + temp+"° C";
         String datetime=  result.getList().get(position*8).getDtTxt().split(" ")[0];
         String dayName= this.getDateOfTheWeek(datetime).toUpperCase();
@@ -71,7 +60,7 @@ public class WeatherAdapter  extends RecyclerView.Adapter<WeatherAdapter.ViewHol
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return "";
+        return datetime;
     }
 
     @Override

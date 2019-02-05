@@ -53,9 +53,13 @@ public class HomeFragment extends Fragment {
         call.enqueue(new Callback<Result>() {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response){
-                Result result = response.body();
-                initComponents(result, view);
-                initRecyclerView(view,result);
+                if(response.isSuccessful()) {
+                    Result result = response.body();
+                    initComponents(result, view);
+                    initRecyclerView(view, result);
+                }else {
+                    Toast.makeText(getContext().getApplicationContext(),"Error: Not connection to API Weather.",Toast.LENGTH_LONG).show();
+                }
             }
             @Override
             public void onFailure(Call<Result> call, Throwable t) {

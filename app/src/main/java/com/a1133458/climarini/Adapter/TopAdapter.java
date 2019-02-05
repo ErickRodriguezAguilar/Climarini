@@ -1,19 +1,15 @@
 package com.a1133458.climarini.Adapter;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.a1133458.climarini.Activities.AppScreen;
 import com.a1133458.climarini.Activities.TopCityScreen;
 import com.a1133458.climarini.R;
 

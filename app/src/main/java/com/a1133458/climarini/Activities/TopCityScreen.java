@@ -57,7 +57,7 @@ public class TopCityScreen extends AppCompatActivity {
                     Result result = response.body();
                     initRecyclerView(view, result);
                 }else{
-                    Toast.makeText(getApplicationContext().getApplicationContext(), "Error: Not city found", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext().getApplicationContext(), "Error: Not connection with API Weather.", Toast.LENGTH_LONG).show();
                 }
             }
             @Override
